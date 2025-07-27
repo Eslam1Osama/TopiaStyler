@@ -25,7 +25,7 @@ const PlatformConfig = {
         const configs = {
             development: [
                 {
-                    name: 'EasOfTopia',
+                    name: 'Home',
                     url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
@@ -40,7 +40,7 @@ const PlatformConfig = {
             ],
             staging: [
                 {
-                    name: 'EasOfTopia',
+                    name: 'Home',
                     url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
@@ -55,7 +55,7 @@ const PlatformConfig = {
             ],
             production: [
                 {
-                    name: 'EasOfTopia',
+                    name: 'Home',
                     url: 'https://eas-of-topia.vercel.app/'
                 },
                 {

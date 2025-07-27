@@ -3,6 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional visual HTML/CSS editor with real-time preview, smart unit system, Google Fonts integration, and enterprise-grade platform architecture. Perfect for web developers and designers.">
+    <meta name="keywords" content="HTML editor, CSS editor, visual editor, web development, frontend, responsive design, Google Fonts, real-time preview">
+    <meta name="author" content="TopiaStyler Team">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#38bdf8">
+    <meta name="msapplication-TileColor" content="#38bdf8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="TopiaStyler">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TopiaStyler - Visual HTML/CSS Editor">
+    <meta property="og:description" content="Professional visual HTML/CSS editor with real-time preview, smart unit system, and enterprise-grade platform architecture.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://topiastyler.vercel.app/">
+    <meta property="og:image" content="https://topiastyler.vercel.app/assets/logo.png">
+    <meta property="og:image:width" content="192">
+    <meta property="og:image:height" content="192">
+    <meta property="og:site_name" content="TopiaStyler">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TopiaStyler - Visual HTML/CSS Editor">
+    <meta name="twitter:description" content="Professional visual HTML/CSS editor with real-time preview, smart unit system, and enterprise-grade platform architecture.">
+    <meta name="twitter:image" content="https://topiastyler.vercel.app/assets/logo.png">
+    <meta name="twitter:site" content="@topiastyler">
+    <meta name="twitter:creator" content="@topiastyler">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-config" content="browserconfig.xml">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://topiastyler.vercel.app/">
+    
     <title>TopiaStyler - Visual HTML/CSS Editor</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/platformNavigation.css">
@@ -41,8 +82,8 @@
             <div class="nav-content">
                 <div class="nav-left">
                     <div class="logo">
-                                <img src="assets/logo.png" alt="TopiaStyler Logo" class="logo-img" />
-        <span>TopiaStyler</span>
+                        <img src="assets/logo.png" alt="TopiaStyler Logo" class="logo-img" onerror="this.style.display='none'" />
+                        <span>TopiaStyler</span>
                     </div>
                 </div>
                 <div class="nav-right">
@@ -1259,5 +1300,68 @@
     <script src="js/exporter.js"></script>
     <!-- At the end of <body>, before main app JS -->
     <script src="platformPreloader.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        // Error handling for React DevTools and chrome-extension URLs
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+        
+        console.error = function(...args) {
+            const message = args.join(' ');
+            if (message.includes('React DevTools') || 
+                message.includes('chrome-extension://') ||
+                message.includes('Extension context invalidated')) {
+                return;
+            }
+            originalConsoleError.apply(console, args);
+        };
+        
+        console.warn = function(...args) {
+            const message = args.join(' ');
+            if (message.includes('React DevTools') || 
+                message.includes('chrome-extension://') ||
+                message.includes('Extension context invalidated')) {
+                return;
+            }
+            originalConsoleWarn.apply(console, args);
+        };
+        
+        // Global error handler for chrome-extension URLs
+        window.addEventListener('error', function(event) {
+            if (event.filename && event.filename.includes('chrome-extension://')) {
+                event.preventDefault();
+                return false;
+            }
+        });
+        
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+        
+        // Logo visibility check
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg) {
+                logoImg.addEventListener('error', function() {
+                    this.style.display = 'none';
+                });
+                
+                // Check if logo loaded successfully
+                if (logoImg.complete && logoImg.naturalHeight === 0) {
+                    logoImg.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
