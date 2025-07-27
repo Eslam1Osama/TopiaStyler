@@ -33,30 +33,6 @@
 - **Dependencies**: Minimal external libraries (JSZip for file compression)
 - **Architecture**: Modular ES6 classes with clean separation of concerns
 
-## 📦 Installation
-
-### Quick Start
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/topiastyler-visual-editor.git
-
-# Navigate to project directory
-cd topiastyler-visual-editor
-
-# Open in your browser
-# Simply open index.html in any modern web browser
-```
-
-### Development Setup
-```bash
-# Install a local server (optional but recommended)
-npm install -g http-server
-
-# Start development server
-http-server -p 8080
-
-# Access at http://localhost:8080
-```
 
 ## 🎯 Usage
 
