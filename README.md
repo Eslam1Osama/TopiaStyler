@@ -1,8 +1,8 @@
 # TopiaStyler - Professional Visual HTML/CSS Editor
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://topiastyler.vercel.app/)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://topiastyler.vercel.app/)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://topia-styler.vercel.app/)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://topia-styler.vercel.app/)
 
 > **Enterprise-grade visual editor for HTML/CSS development with real-time preview, smart unit system, and professional tooling.**
 
