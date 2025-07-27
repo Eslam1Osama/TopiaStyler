@@ -26,7 +26,7 @@ const PlatformConfig = {
             development: [
                 {
                     name: 'Home',
-                    url: 'https://firewalls-ids-web.vercel.app/'
+                    url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
                     name: 'Style Editor',
@@ -41,7 +41,7 @@ const PlatformConfig = {
             staging: [
                 {
                     name: 'Home',
-                    url: 'https://topiastyler-landing-staging.vercel.app'
+                    url: 'https://eas-of-topia.vercel.app/p'
                 },
                 {
                     name: 'Style Editor',
@@ -56,7 +56,7 @@ const PlatformConfig = {
             production: [
                 {
                     name: 'Home',
-                    url: 'https://topiastyler-landing.vercel.app'
+                    url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
                     name: 'Style Editor',
