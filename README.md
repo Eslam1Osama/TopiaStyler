@@ -141,6 +141,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by the TopiaStyler Team**
+**Built with ❤️ by the EasOfTopia Team**
 
 *Empowering developers and non-coders to create beautiful web experiences with professional-grade tools.* 
