@@ -25,7 +25,7 @@ const PlatformConfig = {
         const configs = {
             development: [
                 {
-                    name: 'Home',
+                    name: 'EasOfTopia',
                     url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
@@ -40,22 +40,7 @@ const PlatformConfig = {
             ],
             staging: [
                 {
-                    name: 'Home',
-                    url: 'https://eas-of-topia.vercel.app/p'
-                },
-                {
-                    name: 'Style Editor',
-                    url: window.location.origin,
-                    isCurrent: true
-                },
-                {
-                    name: 'Paletteniffer',
-                    url: 'https://topiastyler-paletteniffer-staging.vercel.app'
-                }
-            ],
-            production: [
-                {
-                    name: 'Home',
+                    name: 'EasOfTopia',
                     url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
@@ -65,7 +50,22 @@ const PlatformConfig = {
                 },
                 {
                     name: 'Paletteniffer',
-                    url: 'https://topiastyler-paletteniffer.vercel.app'
+                    url: 'https://paletteniffer.vercel.app/'
+                }
+            ],
+            production: [
+                {
+                    name: 'EasOfTopia',
+                    url: 'https://eas-of-topia.vercel.app/'
+                },
+                {
+                    name: 'Style Editor',
+                    url: window.location.origin,
+                    isCurrent: true
+                },
+                {
+                    name: 'Paletteniffer',
+                    url: 'https://paletteniffer.vercel.app/'
                 }
             ]
         };
