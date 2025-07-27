@@ -33,30 +33,6 @@
 - **Dependencies**: Minimal external libraries (JSZip for file compression)
 - **Architecture**: Modular ES6 classes with clean separation of concerns
 
-## 📦 Installation
-
-### Quick Start
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/topiastyler-visual-editor.git
-
-# Navigate to project directory
-cd topiastyler-visual-editor
-
-# Open in your browser
-# Simply open index.html in any modern web browser
-```
-
-### Development Setup
-```bash
-# Install a local server (optional but recommended)
-npm install -g http-server
-
-# Start development server
-http-server -p 8080
-
-# Access at http://localhost:8080
-```
 
 ## 🎯 Usage
 
@@ -92,42 +68,6 @@ http-server -p 8080
 - **Observer Pattern** - Event-driven architecture
 - **Factory Pattern** - Dynamic element creation
 - **Strategy Pattern** - Pluggable unit conversion
-
-## 🎨 Customization
-
-### Adding Custom Fonts
-```javascript
-// In platformConfig.js
-getCustomFonts() {
-    return [
-        { name: 'Custom Font', value: "'Custom Font', sans-serif" }
-    ];
-}
-```
-
-### Extending Style Controls
-```javascript
-// Add new style groups in editor.js
-const newStyleGroup = {
-    name: 'Custom Styles',
-    controls: [
-        // Define your custom controls
-    ]
-};
-```
-
-## 🔧 Configuration
-
-### Environment Settings
-```javascript
-// platformConfig.js
-const config = {
-    environment: 'production', // development, staging, production
-    enableAnalytics: true,
-    enablePlatformNavigation: true,
-    // ... more settings
-};
-```
 
 ### Feature Flags
 - `enablePlatformNavigation` - Multi-app navigation
@@ -189,14 +129,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Modern CSS** - For advanced styling features
 - **Web Standards** - For accessibility and compatibility
 
-## 📞 Support
-
-- **Live Demo**: [https://topiastyler.vercel.app/](https://topiastyler.vercel.app/)
-- **Documentation**: [Wiki](https://github.com/yourusername/topiastyler-visual-editor/wiki)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/topiastyler-visual-editor/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/topiastyler-visual-editor/discussions)
-- **Email**: support@topiastyler.com
-
 ## 🏆 Project Status
 
 - **Version**: 1.0.0
@@ -206,6 +138,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by the TopiaStyler Team**
+**Built with ❤️ by the EasOfTopia (TopiaStyler) Team**
 
 *Empowering developers to create beautiful web experiences with professional-grade tools.* 
