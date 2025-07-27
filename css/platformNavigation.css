@@ -1,0 +1,339 @@
+/**
+ * Platform Navigation Styles - Enterprise Level
+ * Seamlessly integrated with EasOfTopia design system
+ * Matches existing button styles and color palette
+ */
+
+/* Platform Navigation Container */
+.platform-navigation {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+}
+
+.platform-nav-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Current App Indicator - Icon-only, matches .btn-primary exactly */
+.current-app-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: #38bdf8;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 2.5rem;
+  height: 2.5rem;
+}
+
+.current-app-indicator:hover:not(:disabled) {
+  background: #0ea5e9;
+  transform: translateY(-1px);
+}
+
+.current-app-indicator:active, .current-app-indicator:focus {
+  background: #0ea5e9 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.current-app-name {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s ease;
+  color: #ffffff;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.platform-navigation.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.platform-navigation.dropdown-closing .dropdown-arrow {
+  transform: rotate(0deg);
+}
+
+/* Platform Dropdown Container */
+.platform-dropdown-container {
+  position: relative;
+}
+
+/* Professional backdrop for dropdown */
+.platform-dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.platform-navigation.dropdown-open .platform-dropdown-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.platform-navigation.dropdown-closing .platform-dropdown-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.platform-dropdown-menu {
+  position: fixed;
+  min-width: 240px;
+  max-width: 280px;
+  background: var(--bg-header);
+  border: 1px solid var(--border-main);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 1002;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.platform-navigation.dropdown-open .platform-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.2s ease, transform 0.15s ease;
+  pointer-events: auto;
+}
+
+/* Closing animation - reverse of opening */
+.platform-navigation.dropdown-closing .platform-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+
+.platform-navigation.dropdown-closing .platform-dropdown-menu.dropdown-up {
+  transform: translateY(8px);
+}
+
+/* Platform Dropdown Items - Clean, minimal design */
+.platform-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid var(--border-main);
+  color: var(--text-main);
+  text-decoration: none;
+  position: relative;
+}
+
+.platform-dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.platform-dropdown-item:hover::before {
+  opacity: 1;
+}
+
+.platform-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.platform-dropdown-item:hover:not(.current) {
+  background: var(--bg-sidebar);
+}
+
+.platform-dropdown-item:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* Current app styles removed - not showing current app in dropdown */
+
+/* App Info */
+.app-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.app-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+/* App description removed - using clean headers only */
+
+/* Current indicator removed - not showing current app in dropdown */
+
+/* Navigation State */
+.platform-navigation.navigating {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.platform-navigation.navigating .current-app-indicator {
+  cursor: wait;
+}
+
+/* Dropdown positioning variants */
+.platform-dropdown-menu.dropdown-up {
+  transform: translateY(8px);
+}
+
+.platform-navigation.dropdown-open .platform-dropdown-menu.dropdown-up {
+  transform: translateY(0);
+}
+
+/* Dark Mode Styles - Matches .btn-primary exactly */
+.dark-mode .current-app-indicator {
+  color: #fff !important;
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%) !important;
+  border: none;
+  text-shadow: 0 1px 2px #23272f;
+}
+
+/* Dark mode styles optimized for icon-only */
+
+.dark-mode .dropdown-arrow {
+  color: #ffffff;
+}
+
+.dark-mode .current-app-indicator:active, .dark-mode .current-app-indicator:focus {
+  background: #38bdf8 !important;
+  color: #fff !important;
+  outline: none;
+}
+
+.dark-mode .platform-dropdown-menu {
+  background: var(--bg-header);
+  border-color: var(--border-main);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .platform-dropdown-item {
+  color: var(--text-main);
+  border-bottom-color: var(--border-main);
+}
+
+.dark-mode .platform-dropdown-item:hover:not(.current) {
+  background: var(--bg-sidebar);
+}
+
+/* Dark mode current app styles removed */
+
+/* Smart Responsive Design - Consistent icon-only across all screens */
+@media (max-width: 1024px) {
+  .platform-dropdown-menu {
+    min-width: 220px;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .platform-dropdown-menu {
+    min-width: 200px;
+    max-width: 240px;
+  }
+  
+  .platform-dropdown-item {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .platform-dropdown-menu {
+    min-width: 180px;
+    max-width: 220px;
+  }
+  
+  .platform-dropdown-item {
+    padding: 0.625rem 0.875rem;
+  }
+  
+  .app-name {
+    font-size: 0.8125rem;
+  }
+  
+  /* App description styles removed */
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .current-app-indicator {
+    border: 2px solid #1e3a8a;
+  }
+  
+  .platform-dropdown-menu {
+    border-width: 2px;
+  }
+  
+  .platform-dropdown-item {
+    border-bottom-width: 1px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .current-app-indicator,
+  .platform-dropdown-menu,
+  .platform-dropdown-item,
+  .dropdown-arrow {
+    transition: none;
+  }
+  
+  .current-app-indicator:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Focus Visible Support */
+.platform-dropdown-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .platform-navigation {
+    display: none;
+  }
+} 

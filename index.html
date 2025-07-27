@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopiaStyler - Visual HTML/CSS Editor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/platformNavigation.css">
+    <link rel="stylesheet" href="css/platformPreloader.css">
+    <!-- Google Fonts - Organized by Category -->
+    <!-- Sans Serif Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=PT+Sans:wght@400;700&family=Ubuntu:wght@400;700&family=Varela&family=Varela+Round&family=Exo:wght@400;700&family=Droid+Sans:wght@400;700&family=Raleway:wght@400;700&family=Poppins:wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Serif Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=PT+Serif:wght@400;700&family=Vollkorn:wght@400;700&family=Bitter:wght@400;700&family=Droid+Serif:wght@400;700&family=Lora:wght@400;700&family=Abril+Fatface&display=swap" rel="stylesheet">
+    <!-- Display & Script Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One&family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Caveat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Monospace Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Platform Preloader -->
+    <div id="platform-preloader" class="platform-preloader">
+      <div class="preloader-logo">
+        <svg class="preloader-blocks" width="64" height="64" viewBox="0 0 64 64">
+          <rect class="block block1" x="4"  y="4"  width="16" height="16" rx="4"/>
+          <rect class="block block2" x="24" y="4"  width="16" height="16" rx="4"/>
+          <rect class="block block3" x="44" y="4"  width="16" height="16" rx="4"/>
+          <rect class="block block4" x="4"  y="24" width="16" height="16" rx="4"/>
+          <rect class="block block5" x="24" y="24" width="16" height="16" rx="4"/>
+          <rect class="block block6" x="44" y="24" width="16" height="16" rx="4"/>
+          <rect class="block block7" x="4"  y="44" width="16" height="16" rx="4"/>
+          <rect class="block block8" x="24" y="44" width="16" height="16" rx="4"/>
+          <rect class="block block9" x="44" y="44" width="16" height="16" rx="4"/>
+        </svg>
+        <span class="preloader-title">EasOfTopia</span>
+      </div>
+    </div>
+    <div class="app-container">
+        <!-- Top Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <div class="logo">
+                                <img src="assets/logo.png" alt="TopiaStyler Logo" class="logo-img" />
+        <span>TopiaStyler</span>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <button id="uploadBtn" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        Upload Project
+                    </button>
+                    <button id="downloadBtn" class="btn btn-secondary" disabled>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17,8 12,13 7,8"/>
+                            <line x1="12" y1="13" x2="12" y2="3"/>
+                        </svg>
+                        Download Project
+                    </button>
+                    <button id="themeToggleBtn" class="btn btn-theme-toggle" aria-label="Toggle dark/light mode">
+                        <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                        </span>
+                        <span class="theme-icon theme-icon-moon" aria-hidden="true" style="display:none;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Style Editor</h3>
+                    <div style="display:flex;gap:0.5em;align-items:center;">
+                        <div id="toggleAllGroupsBtnContainer" style="display:none;">
+                            <button class="btn btn-small" id="toggleAllGroupsBtn" aria-label="Expand/Collapse all style groups" title="Expand/Collapse all" style="display:flex;align-items:center;gap:0.3em;">
+                                <svg id="toggleAllGroupsIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                                <span style="font-size:0.95em;">Expand All</span>
+                            </button>
+                        </div>
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"/>
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+                
+                <div class="sidebar-content">
+                    <div class="element-info" id="elementInfo">
+                        <div class="info-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                            <p>Select an element to edit its styles</p>
+                        </div>
+                    </div>
+                    
+                    <div class="style-groups" id="styleGroups" style="display:none;">
+                        <!-- Typography -->
+                        <div class="style-card style-group" data-group="typography">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="typography-controls" title="Toggle Typography controls">
+                                <span class="style-group-title">Typography</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="typography-controls">
+                                <div class="control-group">
+                                    <label for="fontSize" title="Adjust the size of the text">Font Size</label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="fontSize" inputmode="numeric" pattern="[0-9.\-]*" min="8" max="72" value="16" aria-label="Font Size" data-unit-type="size">
+                                        <select class="unit-select" id="fontSizeUnit" aria-label="Font Size Unit">
+                                            <option value="px" selected>px</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="pt">pt</option>
+                                            <option value="%">%</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="fontWeight" title="Set the thickness of the text" style="display:flex;align-items:center;gap:0.4em;">
+                                        Font Weight
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Font Weight Info" title="Choose how bold or light the text appears. Common weights (300-700) work with most fonts. Light weights (100, 200) and heavy weights (800, 900) may not be available in all fonts. If you don't see changes, try a different font family.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="fontWeight" aria-label="Font Weight">
+                                        <optgroup label="Common Weights">
+                                            <option value="300">Light (300)</option>
+                                            <option value="400" selected>Normal (400)</option>
+                                            <option value="500">Medium (500)</option>
+                                            <option value="600">Semi Bold (600)</option>
+                                            <option value="700">Bold (700)</option>
+                                        </optgroup>
+                                        <optgroup label="Light Weights">
+                                            <option value="100">Thin (100)</option>
+                                            <option value="200">Extra Light (200)</option>
+                                        </optgroup>
+                                        <optgroup label="Heavy Weights">
+                                            <option value="800">Extra Bold (800)</option>
+                                            <option value="900">Black (900)</option>
+                                        </optgroup>
+                                        <optgroup label="Relative Weights">
+                                            <option value="lighter">Lighter</option>
+                                            <option value="bolder">Bolder</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="textColor" title="Change the color of the text">Text Color</label>
+                                    <input type="color" id="textColor" value="#000000" aria-label="Text Color">
+                                </div>
+                                <div class="control-group">
+                                    <label for="fontFamily" title="Choose the font family" style="display:flex;align-items:center;gap:0.4em;">
+                                        Font Family
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Font Family Info" title="Choose the font family for your text. System & Web Safe fonts work everywhere. Google Fonts require internet connection. Use 'Custom...' to enter any font name. All fonts are automatically included in exported files.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="fontFamily" aria-label="Font Family">
+                                        <optgroup label="System & Web Safe Fonts">
+                                            <option value="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">System UI</option>
+                                        <option value="Arial, Helvetica, sans-serif" style="font-family:Arial, Helvetica, sans-serif;">Arial</option>
+                                            <option value="Verdana, Geneva, sans-serif" style="font-family:Verdana, Geneva, sans-serif;">Verdana</option>
+                                            <option value="Tahoma, Geneva, sans-serif" style="font-family:Tahoma, Geneva, sans-serif;">Tahoma</option>
+                                            <option value="Trebuchet MS, Helvetica, sans-serif" style="font-family:'Trebuchet MS', Helvetica, sans-serif;">Trebuchet MS</option>
+                                            <option value="Times New Roman, Times, serif" style="font-family:'Times New Roman', Times, serif;">Times New Roman</option>
+                                        <option value="Georgia, serif" style="font-family:Georgia, serif;">Georgia</option>
+                                            <option value="Palatino Linotype, Book Antiqua, Palatino, serif" style="font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif;">Palatino Linotype</option>
+                                            <option value="Impact, fantasy" style="font-family:Impact, fantasy;">Impact</option>
+                                            <option value="Courier New, Courier, monospace" style="font-family:'Courier New', Courier, monospace;">Courier New</option>
+                                            <option value="Lucida Console, Monaco, monospace" style="font-family:'Lucida Console', Monaco, monospace;">Lucida Console</option>
+                                            <option value="Consolas, monospace" style="font-family:Consolas, monospace;">Consolas</option>
+                                            <option value="Comic Sans MS, Comic Sans, cursive" style="font-family:'Comic Sans MS', 'Comic Sans', cursive;">Comic Sans MS</option>
+                                            <option value="Brush Script MT, cursive" style="font-family:'Brush Script MT', cursive;">Brush Script MT</option>
+                                            <option value="Luminari, fantasy" style="font-family:Luminari, fantasy;">Luminari</option>
+                                            <option value="Gill Sans, Gill Sans MT, Calibri, sans-serif" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;">Gill Sans</option>
+                                        </optgroup>
+                                        <optgroup label="Google Fonts - Sans Serif">
+                                            <option value="Inter, sans-serif" style="font-family:Inter, sans-serif;">Inter</option>
+                                            <option value="Roboto, Arial, sans-serif" style="font-family:Roboto, Arial, sans-serif;">Roboto</option>
+                                            <option value="Open Sans, Arial, sans-serif" style="font-family:'Open Sans', Arial, sans-serif;">Open Sans</option>
+                                            <option value="Lato, Arial, sans-serif" style="font-family:Lato, Arial, sans-serif;">Lato</option>
+                                            <option value="Montserrat, Arial, sans-serif" style="font-family:Montserrat, Arial, sans-serif;">Montserrat</option>
+                                            <option value="Oswald, Arial, sans-serif" style="font-family:Oswald, Arial, sans-serif;">Oswald</option>
+                                            <option value="PT Sans, Arial, sans-serif" style="font-family:'PT Sans', Arial, sans-serif;">PT Sans</option>
+                                            <option value="Ubuntu, Arial, sans-serif" style="font-family:Ubuntu, Arial, sans-serif;">Ubuntu</option>
+                                            <option value="Varela, Arial, sans-serif" style="font-family:Varela, Arial, sans-serif;">Varela</option>
+                                            <option value="Varela Round, Arial, sans-serif" style="font-family:'Varela Round', Arial, sans-serif;">Varela Round</option>
+                                            <option value="Exo, Arial, sans-serif" style="font-family:Exo, Arial, sans-serif;">Exo</option>
+                                            <option value="Droid Sans, Arial, sans-serif" style="font-family:'Droid Sans', Arial, sans-serif;">Droid Sans</option>
+                                            <option value="Raleway, Arial, sans-serif" style="font-family:Raleway, Arial, sans-serif;">Raleway</option>
+                                            <option value="Poppins, Arial, sans-serif" style="font-family:Poppins, Arial, sans-serif;">Poppins</option>
+                                            <option value="Quicksand, Arial, sans-serif" style="font-family:Quicksand, Arial, sans-serif;">Quicksand</option>
+                                        </optgroup>
+                                        <optgroup label="Google Fonts - Serif">
+                                            <option value="Merriweather, serif" style="font-family:Merriweather, serif;">Merriweather</option>
+                                            <option value="PT Serif, serif" style="font-family:'PT Serif', serif;">PT Serif</option>
+                                            <option value="Vollkorn, serif" style="font-family:Vollkorn, serif;">Vollkorn</option>
+                                            <option value="Bitter, serif" style="font-family:Bitter, serif;">Bitter</option>
+                                            <option value="Droid Serif, serif" style="font-family:'Droid Serif', serif;">Droid Serif</option>
+                                            <option value="Lora, serif" style="font-family:Lora, serif;">Lora</option>
+                                            <option value="Abril Fatface, serif" style="font-family:'Abril Fatface', serif;">Abril Fatface</option>
+                                        </optgroup>
+                                        <optgroup label="Google Fonts - Display & Script">
+                                            <option value="Bebas Neue, Arial, sans-serif" style="font-family:'Bebas Neue', Arial, sans-serif;">Bebas Neue</option>
+                                            <option value="Changa One, cursive" style="font-family:'Changa One', cursive;">Changa One</option>
+                                            <option value="Pacifico, cursive" style="font-family:Pacifico, cursive;">Pacifico</option>
+                                            <option value="Dancing Script, cursive" style="font-family:'Dancing Script', cursive;">Dancing Script</option>
+                                            <option value="Great Vibes, cursive" style="font-family:'Great Vibes', cursive;">Great Vibes</option>
+                                            <option value="Caveat, cursive" style="font-family:Caveat, cursive;">Caveat</option>
+                                        </optgroup>
+                                        <optgroup label="Google Fonts - Monospace">
+                                            <option value="Fira Mono, monospace" style="font-family:'Fira Mono', monospace;">Fira Mono</option>
+                                            <option value="Space Mono, monospace" style="font-family:'Space Mono', monospace;">Space Mono</option>
+                                            <option value="Inconsolata, monospace" style="font-family:Inconsolata, monospace;">Inconsolata</option>
+                                        </optgroup>
+                                        <optgroup label="Additional Fonts">
+                                            <option value="Playfair Display, serif" style="font-family:'Playfair Display', serif;">Playfair Display</option>
+                                            <option value="custom">Custom Font...</option>
+                                        </optgroup>
+                                    </select>
+                                    <input type="text" id="fontFamilyCustom" placeholder="e.g. 'Comic Sans MS', cursive" aria-label="Custom Font Family" style="display:none;margin-top:0.3em;" />
+                                </div>
+                                <div class="control-group">
+                                    <label for="lineHeight" title="Adjust the spacing between lines of text">Line Height</label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="lineHeight" inputmode="numeric" pattern="[0-9.\-]*" min="0.5" max="3" step="0.05" value="1.5" aria-label="Line Height" data-unit-type="line-height">
+                                        <select class="unit-select" id="lineHeightUnit" aria-label="Line Height Unit">
+                                            <option value="" selected>unitless</option>
+                                            <option value="px">px</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="%">%</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="letterSpacing" title="Adjust the spacing between letters">Letter Spacing</label>
+                                    <div class="smart-unit-input">
+                                        <select class="unit-select" id="letterSpacingMode" aria-label="Letter Spacing Mode" style="min-width:80px;">
+                                            <option value="normal">Normal</option>
+                                            <option value="custom" selected>Custom</option>
+                                        </select>
+                                        <input type="text" id="letterSpacing" inputmode="numeric" pattern="[0-9.\-]*" min="-2" max="10" step="0.1" value="0" aria-label="Letter Spacing" data-unit-type="spacing">
+                                        <select class="unit-select" id="letterSpacingUnit" aria-label="Letter Spacing Unit">
+                                            <option value="px" selected>px</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label title="Set text alignment">Text Align</label>
+                                    <div class="text-align-group" role="group" aria-label="Text Align" style="display:flex;gap:0.5em;">
+                                        <button type="button" class="text-align-btn" data-value="left" aria-label="Align Left" title="Align Left"><svg width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="2"/><rect x="3" y="11" width="12" height="2"/><rect x="3" y="17" width="18" height="2"/></svg></button>
+                                        <button type="button" class="text-align-btn" data-value="center" aria-label="Align Center" title="Align Center"><svg width="18" height="18" viewBox="0 0 24 24"><rect x="6" y="5" width="12" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="6" y="17" width="12" height="2"/></svg></button>
+                                        <button type="button" class="text-align-btn" data-value="right" aria-label="Align Right" title="Align Right"><svg width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="2"/><rect x="9" y="11" width="12" height="2"/><rect x="3" y="17" width="18" height="2"/></svg></button>
+                                        <button type="button" class="text-align-btn" data-value="justify" aria-label="Justify" title="Justify"><svg width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="3" y="17" width="18" height="2"/></svg></button>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="textTransform" title="Change text capitalization" style="display:flex;align-items:center;gap:0.4em;">
+                                        Text Transform
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Text Transform Info" title="Some options (like full-width/full-size-kana) are only visible with certain languages or fonts.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="textTransform" aria-label="Text Transform">
+                                        <option value="none">None</option>
+                                        <option value="uppercase">UPPERCASE</option>
+                                        <option value="lowercase">lowercase</option>
+                                        <option value="capitalize">Capitalize</option>
+                                        <option value="full-width">Full-width</option>
+                                        <option value="full-size-kana">Full-size Kana</option>
+                                        <option value="inherit">Inherit</option>
+                                        <option value="initial">Initial</option>
+                                        <option value="unset">Unset</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Layout -->
+                        <div class="style-card style-group" data-group="layout">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="layout-controls" title="Toggle Layout controls">
+                                <span class="style-group-title">Layout</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="layout-controls">
+                                <div class="control-group">
+                                    <label for="display" title="Set the display type (block, flex, etc)" style="display:flex;align-items:center;gap:0.4em;">
+                                        Display
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Display Info" title="Display controls how an element is rendered in the layout. 'Block' creates full-width elements, 'Inline' flows with text, 'Flex' enables flexible layouts, 'Grid' creates grid layouts, and 'None' removes from layout entirely. Advanced options like 'Contents' and 'Flow Root' have specific use cases.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="display" aria-label="Display">
+                                        <optgroup label="Common Layout">
+                                        <option value="block">Block</option>
+                                        <option value="inline">Inline</option>
+                                        <option value="inline-block">Inline Block</option>
+                                            <option value="none">None</option>
+                                        </optgroup>
+                                        <optgroup label="Flexbox Layout">
+                                        <option value="flex">Flex</option>
+                                            <option value="inline-flex">Inline Flex</option>
+                                        </optgroup>
+                                        <optgroup label="Grid Layout">
+                                        <option value="grid">Grid</option>
+                                            <option value="inline-grid">Inline Grid</option>
+                                        </optgroup>
+                                        <optgroup label="Table Layout">
+                                            <option value="table">Table</option>
+                                            <option value="table-row">Table Row</option>
+                                            <option value="table-cell">Table Cell</option>
+                                        </optgroup>
+                                        <optgroup label="Special">
+                                            <option value="list-item">List Item</option>
+                                            <option value="contents">Contents</option>
+                                            <option value="flow-root">Flow Root</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="width" title="Set the width of the element">Width</label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="width" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Width" data-unit-type="dimension">
+                                        <select class="unit-select" id="widthUnit" aria-label="Width Unit">
+                                            <option value="px">px</option>
+                                            <option value="%" selected>%</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="vw">vw</option>
+                                            <option value="vh">vh</option>
+                                            <option value="auto">auto</option>
+                                            <option value="fit-content">fit-content</option>
+                                            <option value="max-content">max-content</option>
+                                            <option value="min-content">min-content</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="height" title="Set the height of the element">Height</label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="height" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Height" data-unit-type="dimension">
+                                        <select class="unit-select" id="heightUnit" aria-label="Height Unit">
+                                            <option value="px">px</option>
+                                            <option value="%" selected>%</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="vw">vw</option>
+                                            <option value="vh">vh</option>
+                                            <option value="auto">auto</option>
+                                            <option value="fit-content">fit-content</option>
+                                            <option value="max-content">max-content</option>
+                                            <option value="min-content">min-content</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="overflow" title="Set the overflow behavior for content that exceeds the element's box" style="display:flex;align-items:center;gap:0.4em;">
+                                        Overflow
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Overflow Info" title="Overflow controls how content behaves when it exceeds the container's boundaries. 'Visible' shows overflow content, 'Hidden' clips it, 'Scroll' adds scrollbars, 'Auto' adds scrollbars only when needed, and 'Clip' clips content without scrollbars. Use with fixed dimensions for best results.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="overflow" aria-label="Overflow">
+                                        <optgroup label="Common Overflow">
+                                            <option value="visible">Visible</option>
+                                            <option value="hidden">Hidden</option>
+                                            <option value="auto">Auto</option>
+                                            <option value="scroll">Scroll</option>
+                                        </optgroup>
+                                        <optgroup label="Advanced">
+                                            <option value="clip">Clip</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="visibility" title="Control the visibility of the element">Visibility</label>
+                                    <select id="visibility" aria-label="Visibility">
+                                        <optgroup label="Visibility States">
+                                            <option value="visible">Visible (Default)</option>
+                                            <option value="hidden">Hidden (Invisible)</option>
+                                            <option value="collapse">Collapse (Table Only)</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Spacing -->
+                        <div class="style-card style-group" data-group="spacing">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="spacing-controls" title="Toggle Spacing controls">
+                                <span class="style-group-title">Spacing</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="spacing-controls">
+                                <div class="control-group">
+                                    <label for="margin" title="Set the margin around the element">Margin</label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="margin" inputmode="numeric" pattern="[0-9.\- ]*" placeholder="Enter number" aria-label="Margin" data-unit-type="spacing-multi">
+                                        <select class="unit-select" id="marginUnit" aria-label="Margin Unit">
+                                            <option value="px" selected>px</option>
+                                            <option value="%">%</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="vw">vw</option>
+                                            <option value="vh">vh</option>
+                                            <option value="auto">auto</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="padding" title="Set the padding inside the element">Padding</label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="padding" inputmode="numeric" pattern="[0-9.\- ]*" placeholder="Enter number" aria-label="Padding" data-unit-type="spacing-multi">
+                                        <select class="unit-select" id="paddingUnit" aria-label="Padding Unit">
+                                            <option value="px" selected>px</option>
+                                            <option value="%">%</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="vw">vw</option>
+                                            <option value="vh">vh</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Positioning -->
+                        <div class="style-card style-group" data-group="positioning">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="positioning-controls" title="Toggle Positioning controls">
+                                <span class="style-group-title">Positioning</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="positioning-controls">
+                                <div class="control-group">
+                                    <label for="position" title="Set the CSS position property" style="display:flex;align-items:center;gap:0.4em;">
+                                        Position
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Position Info" title="Position controls how an element is placed in the document flow. 'Static' (default) follows normal flow, 'Relative' offsets from normal position, 'Absolute' positions relative to nearest positioned ancestor, 'Fixed' stays in viewport during scroll, 'Sticky' scrolls until it sticks. Only positioned elements (not static) can use z-index and positioning coordinates.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="position" aria-label="Position">
+                                        <optgroup label="Document Flow">
+                                            <option value="static">Static (default)</option>
+                                            <option value="relative">Relative</option>
+                                        </optgroup>
+                                        <optgroup label="Out of Flow">
+                                            <option value="absolute">Absolute</option>
+                                            <option value="fixed">Fixed</option>
+                                            <option value="sticky">Sticky</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                            <option value="revert">Revert</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group positioning-grid">
+                                    <div class="pos-cell">
+                                        <label for="top" title="Set the top offset of the element. Accepts px, %, em, rem, vw, vh, or 'auto'. Use 'auto' to let the browser decide. Example: 20px, 10%, auto.">Top
+                                            <span tabindex="0" aria-label="Top Info" title="Controls the vertical offset from the top edge of the positioned ancestor. Use px for fixed spacing, % for relative, or 'auto' for default browser behavior. Only works if position is not static.">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                            </span>
+                                        </label>
+                                        <div class="smart-unit-input">
+                                            <input type="text" id="top" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Top" data-unit-type="position">
+                                            <select class="unit-select" id="topUnit" aria-label="Top Unit">
+                                                <option value="px" selected>px</option>
+                                                <option value="%">%</option>
+                                                <option value="em">em</option>
+                                                <option value="rem">rem</option>
+                                                <option value="vw">vw</option>
+                                                <option value="vh">vh</option>
+                                                <option value="auto" title="Let the browser decide position">auto</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="pos-cell">
+                                        <label for="right" title="Set the right offset of the element. Accepts px, %, em, rem, vw, vh, or 'auto'. Use 'auto' to let the browser decide. Example: 20px, 10%, auto.">Right
+                                            <span tabindex="0" aria-label="Right Info" title="Controls the horizontal offset from the right edge of the positioned ancestor. Use px for fixed spacing, % for relative, or 'auto' for default browser behavior. Only works if position is not static.">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                            </span>
+                                        </label>
+                                        <div class="smart-unit-input">
+                                            <input type="text" id="right" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Right" data-unit-type="position">
+                                            <select class="unit-select" id="rightUnit" aria-label="Right Unit">
+                                                <option value="px" selected>px</option>
+                                                <option value="%">%</option>
+                                                <option value="em">em</option>
+                                                <option value="rem">rem</option>
+                                                <option value="vw">vw</option>
+                                                <option value="vh">vh</option>
+                                                <option value="auto" title="Let the browser decide position">auto</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="pos-cell">
+                                        <label for="bottom" title="Set the bottom offset of the element. Accepts px, %, em, rem, vw, vh, or 'auto'. Use 'auto' to let the browser decide. Example: 20px, 10%, auto.">Bottom
+                                            <span tabindex="0" aria-label="Bottom Info" title="Controls the vertical offset from the bottom edge of the positioned ancestor. Use px for fixed spacing, % for relative, or 'auto' for default browser behavior. Only works if position is not static.">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                            </span>
+                                        </label>
+                                        <div class="smart-unit-input">
+                                            <input type="text" id="bottom" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Bottom" data-unit-type="position">
+                                            <select class="unit-select" id="bottomUnit" aria-label="Bottom Unit">
+                                                <option value="px" selected>px</option>
+                                                <option value="%">%</option>
+                                                <option value="em">em</option>
+                                                <option value="rem">rem</option>
+                                                <option value="vw">vw</option>
+                                                <option value="vh">vh</option>
+                                                <option value="auto" title="Let the browser decide position">auto</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="pos-cell">
+                                        <label for="left" title="Set the left offset of the element. Accepts px, %, em, rem, vw, vh, or 'auto'. Use 'auto' to let the browser decide. Example: 20px, 10%, auto.">Left
+                                            <span tabindex="0" aria-label="Left Info" title="Controls the horizontal offset from the left edge of the positioned ancestor. Use px for fixed spacing, % for relative, or 'auto' for default browser behavior. Only works if position is not static.">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                            </span>
+                                        </label>
+                                        <div class="smart-unit-input">
+                                            <input type="text" id="left" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Left" data-unit-type="position">
+                                            <select class="unit-select" id="leftUnit" aria-label="Left Unit">
+                                                <option value="px" selected>px</option>
+                                                <option value="%">%</option>
+                                                <option value="em">em</option>
+                                                <option value="rem">rem</option>
+                                                <option value="vw">vw</option>
+                                                <option value="vh">vh</option>
+                                                <option value="auto" title="Let the browser decide position">auto</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group zindex-row">
+                                    <label for="zIndex" title="Set the stacking order of the element. Accepts integer values or 'auto', 'inherit', 'initial', 'unset'. Higher values appear above lower ones.">Z-Index
+                                        <span tabindex="0" aria-label="Z-Index Info" title="Controls the stacking order of overlapping elements. Use higher numbers to bring elements to the front. 'auto' uses browser default. Only works if position is not static.">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="zIndex" inputmode="numeric" pattern="[0-9\-]*" value="0" placeholder="e.g. 0, 100, -1" aria-label="Z-Index" data-unit-type="z-index">
+                                        <select class="unit-select" id="zIndexUnit" aria-label="Z-Index Unit">
+                                            <option value="" selected>number</option>
+                                            <option value="auto" title="Let the browser decide stacking order">auto</option>
+                                            <option value="inherit" title="Inherit from parent">inherit</option>
+                                            <option value="initial" title="CSS initial value">initial</option>
+                                            <option value="unset" title="Unset to inherited or initial">unset</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Interaction -->
+                        <div class="style-card style-group" data-group="interaction">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="interaction-controls" title="Toggle Interaction controls">
+                                <span class="style-group-title">Interaction</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="interaction-controls">
+                                <div class="control-group">
+                                    <label for="cursor" title="Set the mouse cursor when hovering over this element. Choose from basic, advanced, and specialized cursor types for different interactions." style="display:flex;align-items:center;gap:0.4em;">
+                                        Cursor
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Cursor Info" title="Choose how the mouse cursor appears when hovering. Basic cursors work everywhere, advanced ones may not be supported by all browsers. Use 'default' for normal behavior, 'pointer' for clickable elements, and specialized cursors for specific interactions like resizing or text selection.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="cursor" aria-label="Cursor">
+                                        <optgroup label="Basic Cursors">
+                                            <option value="default">Default (Arrow)</option>
+                                            <option value="pointer">Pointer (Hand)</option>
+                                            <option value="text">Text (I-beam)</option>
+                                            <option value="move">Move (Cross)</option>
+                                            <option value="not-allowed">Not Allowed (Forbidden)</option>
+                                        </optgroup>
+                                        <optgroup label="Interactive Cursors">
+                                            <option value="grab">Grab (Open Hand)</option>
+                                            <option value="grabbing">Grabbing (Closed Hand)</option>
+                                            <option value="crosshair">Crosshair (Precise)</option>
+                                            <option value="help">Help (Question Mark)</option>
+                                            <option value="wait">Wait (Loading)</option>
+                                            <option value="progress">Progress (Loading with Arrow)</option>
+                                        </optgroup>
+                                        <optgroup label="Resize Cursors">
+                                            <option value="col-resize">Column Resize (↔)</option>
+                                            <option value="row-resize">Row Resize (↕)</option>
+                                            <option value="ew-resize">East-West Resize (↔)</option>
+                                            <option value="ns-resize">North-South Resize (↕)</option>
+                                            <option value="nesw-resize">NE/SW Resize (↗↙)</option>
+                                            <option value="nwse-resize">NW/SE Resize (↖↘)</option>
+                                        </optgroup>
+                                        <optgroup label="Specialized Cursors">
+                                            <option value="cell">Cell (Table Selection)</option>
+                                            <option value="vertical-text">Vertical Text (↕ I-beam)</option>
+                                            <option value="alias">Alias (Link Creation)</option>
+                                            <option value="copy">Copy (Document Copy)</option>
+                                            <option value="zoom-in">Zoom In (Magnifier +)</option>
+                                            <option value="zoom-out">Zoom Out (Magnifier -)</option>
+                                            <option value="no-drop">No Drop (Forbidden Drop)</option>
+                                            <option value="all-scroll">All Scroll (Pan)</option>
+                                            <option value="context-menu">Context Menu (Right-click)</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="pointerEvents" title="Control if the element can be the target of pointer events. Use 'none' to disable all mouse/touch interaction, or choose specific behavior for SVG elements." style="display:flex;align-items:center;gap:0.4em;">
+                                        Pointer Events
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Pointer Events Info" title="Controls how the element responds to mouse and touch events. 'None' disables all interaction (useful for overlays). 'Auto' is normal behavior. SVG-specific options control how the element responds to pointer events based on visibility and painting.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="pointerEvents" aria-label="Pointer Events">
+                                        <optgroup label="Standard Behavior">
+                                            <option value="auto">Auto (Default)</option>
+                                            <option value="none">None (No Interaction)</option>
+                                            <option value="all">All (All Events)</option>
+                                        </optgroup>
+                                        <optgroup label="SVG-Specific (Advanced)">
+                                            <option value="visiblePainted">Visible Painted (SVG)</option>
+                                            <option value="visibleFill">Visible Fill (SVG)</option>
+                                            <option value="visibleStroke">Visible Stroke (SVG)</option>
+                                            <option value="painted">Painted (SVG)</option>
+                                            <option value="fill">Fill (SVG)</option>
+                                            <option value="stroke">Stroke (SVG)</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="userSelect" title="Control if the user can select text in this element. Use 'none' to prevent text selection, 'all' to select everything, or 'text' for normal text selection." style="display:flex;align-items:center;gap:0.4em;">
+                                        User Select
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="User Select Info" title="Controls if users can select/copy text content. 'None' disables all text selection (useful for UI elements). 'Text' allows normal text selection. 'All' selects the entire element. 'Contain' prevents selection outside the element.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="userSelect" aria-label="User Select">
+                                        <optgroup label="Selection Behavior">
+                                            <option value="auto">Auto (Default)</option>
+                                            <option value="none">None (No Selection)</option>
+                                            <option value="text">Text (Text Only)</option>
+                                            <option value="all">All (Everything)</option>
+                                            <option value="contain">Contain (Within Element)</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="touchAction" title="Control touch behavior for mobile devices. Optimize scrolling, zooming, and panning interactions for better mobile UX." style="display:flex;align-items:center;gap:0.4em;">
+                                        Touch Action
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Touch Action Info" title="Controls how touch gestures behave on mobile devices. 'Auto' allows all gestures. 'None' disables all touch gestures. Use specific values like 'pan-x' for horizontal scrolling only, or 'manipulation' to disable double-tap zoom for better performance.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="touchAction" aria-label="Touch Action">
+                                        <optgroup label="Standard Behavior">
+                                            <option value="auto">Auto (All Gestures)</option>
+                                            <option value="none">None (No Gestures)</option>
+                                            <option value="manipulation">Manipulation (No Double-tap Zoom)</option>
+                                        </optgroup>
+                                        <optgroup label="Pan Controls">
+                                            <option value="pan-x">Pan X (Horizontal Only)</option>
+                                            <option value="pan-y">Pan Y (Vertical Only)</option>
+                                            <option value="pan-left">Pan Left</option>
+                                            <option value="pan-right">Pan Right</option>
+                                            <option value="pan-up">Pan Up</option>
+                                            <option value="pan-down">Pan Down</option>
+                                        </optgroup>
+                                        <optgroup label="Pinch Controls">
+                                            <option value="pinch-zoom">Pinch Zoom</option>
+                                        </optgroup>
+                                        <optgroup label="Combined Actions">
+                                            <option value="pan-x pan-y">Pan X + Y</option>
+                                            <option value="pan-x pinch-zoom">Pan X + Pinch</option>
+                                            <option value="pan-y pinch-zoom">Pan Y + Pinch</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="draggable" title="Control if the element can be dragged and dropped. Enables HTML5 drag and drop functionality for interactive elements." style="display:flex;align-items:center;gap:0.4em;">
+                                        Draggable
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Draggable Info" title="Controls if the element can be dragged using HTML5 drag and drop API. 'True' enables dragging, 'False' disables it, 'Auto' uses browser default. Requires JavaScript event handlers (ondragstart, ondragend) for full functionality.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="draggable" aria-label="Draggable">
+                                        <optgroup label="Drag Behavior">
+                                            <option value="auto">Auto (Browser Default)</option>
+                                            <option value="true">True (Draggable)</option>
+                                            <option value="false">False (Not Draggable)</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="resize" title="Control if the element can be resized by the user. Useful for textareas, iframes, and custom resizable components." style="display:flex;align-items:center;gap:0.4em;">
+                                        Resize
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Resize Info" title="Controls if users can resize the element by dragging its edges. 'None' prevents resizing. 'Both' allows resizing in all directions. 'Horizontal' and 'Vertical' restrict to one direction. Works best with overflow: auto/scroll.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="resize" aria-label="Resize">
+                                        <optgroup label="Resize Behavior">
+                                            <option value="none">None (No Resize)</option>
+                                            <option value="both">Both (All Directions)</option>
+                                            <option value="horizontal">Horizontal (Left/Right)</option>
+                                            <option value="vertical">Vertical (Up/Down)</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Background -->
+                        <div class="style-card style-group" data-group="background">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="background-controls" title="Toggle Background controls">
+                                <span class="style-group-title">Background</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="background-controls">
+                                <div class="control-group">
+                                    <label for="backgroundColor" title="Set the background color">Background Color</label>
+                                    <input type="color" id="backgroundColor" value="#ffffff" aria-label="Background Color">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Border -->
+                        <div class="style-card style-group" data-group="border">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="border-controls" title="Toggle Border controls">
+                                <span class="style-group-title">Border</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="border-controls">
+                                <div class="control-group">
+                                    <label for="borderWidth" title="Set the thickness of the element's border" style="display:flex;align-items:center;gap:0.4em;">
+                                        Border Width
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Border Width Info" title="Border width controls the thickness of the element's border. Use '0' to remove the border. Common values: 1-3px for subtle borders, 4-8px for emphasis, 10px+ for strong visual impact. Consider design hierarchy and visual weight when choosing border widths. Works with all border styles.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="borderWidth" inputmode="numeric" pattern="[0-9.\-]*" min="0" max="10" value="0" aria-label="Border Width" data-unit-type="border">
+                                        <select class="unit-select" id="borderWidthUnit" aria-label="Border Width Unit">
+                                            <option value="px" selected>px</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                            <option value="pt">pt</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="borderStyle" title="Define the visual style of the element's border" style="display:flex;align-items:center;gap:0.4em;">
+                                        Border Style
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Border Style Info" title="Border styles define the visual appearance of element borders. 'None' removes the border. 'Solid' creates a continuous line. 'Dashed' and 'Dotted' create broken lines. 'Double' creates two parallel lines. 3D styles (groove, ridge, inset, outset) create depth effects. Choose based on design needs and visual hierarchy.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="borderStyle" aria-label="Border Style">
+                                        <optgroup label="No Border">
+                                            <option value="none">None (No Border)</option>
+                                        </optgroup>
+                                        <optgroup label="Basic Styles">
+                                            <option value="solid">Solid (Continuous Line)</option>
+                                            <option value="dashed">Dashed (Broken Line)</option>
+                                            <option value="dotted">Dotted (Dotted Line)</option>
+                                            <option value="double">Double (Two Lines)</option>
+                                        </optgroup>
+                                        <optgroup label="3D Effects">
+                                            <option value="groove">Groove (3D Groove)</option>
+                                            <option value="ridge">Ridge (3D Ridge)</option>
+                                            <option value="inset">Inset (3D Inset)</option>
+                                            <option value="outset">Outset (3D Outset)</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="borderColor" title="Set the color of the element's border" style="display:flex;align-items:center;gap:0.4em;">
+                                        Border Color
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Border Color Info" title="Border color defines the visual color of the element's border. Choose colors that complement your design and provide sufficient contrast. Consider accessibility - ensure border colors meet WCAG contrast requirements. Use transparent colors for subtle effects or to match background colors.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <input type="color" id="borderColor" value="#000000" aria-label="Border Color" title="Click to open color picker for border color">
+                                </div>
+                                <div class="control-group">
+                                    <label for="outline" title="Control the focus outline appearance. Essential for accessibility - use 'none' carefully and provide alternative focus indicators." style="display:flex;align-items:center;gap:0.4em;">
+                                        Outline
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Outline Info" title="Controls the focus outline that appears when navigating with keyboard. 'Auto' uses browser default. 'None' removes outline (use with custom focus styles). 'Dotted' and 'Solid' provide visible focus indicators. Essential for accessibility compliance.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <select id="outline" aria-label="Outline">
+                                        <optgroup label="Outline Styles">
+                                            <option value="auto">Auto (Browser Default)</option>
+                                            <option value="none">None (No Outline)</option>
+                                            <option value="dotted">Dotted (Dotted Line)</option>
+                                            <option value="dashed">Dashed (Dashed Line)</option>
+                                            <option value="solid">Solid (Solid Line)</option>
+                                            <option value="double">Double (Double Line)</option>
+                                            <option value="groove">Groove (3D Groove)</option>
+                                            <option value="ridge">Ridge (3D Ridge)</option>
+                                            <option value="inset">Inset (3D Inset)</option>
+                                            <option value="outset">Outset (3D Outset)</option>
+                                        </optgroup>
+                                        <optgroup label="CSS Values">
+                                            <option value="inherit">Inherit</option>
+                                            <option value="initial">Initial</option>
+                                            <option value="unset">Unset</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Effects -->
+                        <div class="style-card style-group" data-group="effects">
+                            <button class="style-group-toggle" aria-expanded="true" aria-controls="effects-controls" title="Toggle Effects controls">
+                                <span class="style-group-title">Effects</span>
+                                <span class="chevron">&#9662;</span>
+                            </button>
+                            <div class="style-controls" id="effects-controls">
+                                <div class="control-group">
+                                    <label for="borderRadius" title="Add rounded corners to the element" style="display:flex;align-items:center;gap:0.4em;">
+                                        Border Radius
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Border Radius Info" title="Border radius creates rounded corners on elements. Use '0' for sharp corners. Common values: 4-8px for subtle rounding, 12-16px for modern look, 50% for circles. Percentage values create elliptical corners. Consider design consistency and visual hierarchy when choosing radius values.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="smart-unit-input">
+                                        <input type="text" id="borderRadius" inputmode="numeric" pattern="[0-9.\-]*" placeholder="Enter number" aria-label="Border Radius" data-unit-type="radius">
+                                        <select class="unit-select" id="borderRadiusUnit" aria-label="Border Radius Unit">
+                                            <option value="px" selected>px</option>
+                                            <option value="%">%</option>
+                                            <option value="em">em</option>
+                                            <option value="rem">rem</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="boxShadowSelect" title="Set the box shadow (visual effect)" style="display:flex;align-items:center;gap:0.4em;">
+                                        Box Shadow
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Box Shadow Info" title="Box shadows create depth, emphasis, and visual hierarchy. Format: 'x-offset y-offset blur-radius spread-radius color'. Layer multiple shadows with commas for advanced effects. Includes glow effects, inset shadows, neumorphism, and glassmorphism styles. Use 'Custom...' for precise control. Performance impact varies by complexity.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="box-shadow-control" style="display:flex;flex-direction:column;gap:0.3em;">
+                                        <select id="boxShadowSelect" aria-label="Box Shadow Preset">
+                                            <optgroup label="Simple Shadows">
+                                            <option value="none">None</option>
+                                            <option value="0 1px 3px #0002">Subtle</option>
+                                            <option value="0 2px 8px #0003">Medium</option>
+                                            <option value="0 4px 16px #0004">Strong</option>
+                                            <option value="0 0 0 2px #38bdf8">Outline</option>
+                                                <option value="0 8px 24px #0005">Deep</option>
+                                            </optgroup>
+                                            <optgroup label="Glow Effects">
+                                                <option value="0 0 16px #38bdf8">Glow Blue</option>
+                                                <option value="0 0 16px #facc15">Glow Yellow</option>
+                                                <option value="0 0 16px #f472b6">Glow Pink</option>
+                                                <option value="0 0 16px #4ade80">Glow Green</option>
+                                                <option value="0 0 0 2px #fff, 0 0 16px #38bdf8">Outline + Glow</option>
+                                                <option value="0 0 0 2px #f472b6, 0 0 16px #f472b6">Pink Glow</option>
+                                                <option value="0 0 0 2px #4ade80, 0 0 16px #4ade80">Green Glow</option>
+                                                <option value="0 0 0 2px #facc15, 0 0 16px #facc15">Yellow Glow</option>
+                                                <option value="0 0 0 2px #fff, 0 0 16px #fff">White Glow</option>
+                                                <option value="0 0 0 2px #000, 0 0 16px #000">Black Glow</option>
+                                            </optgroup>
+                                            <optgroup label="Inset & Focus">
+                                                <option value="0 0 0 4px #fff, 0 2px 8px #0002">Focus Ring</option>
+                                                <option value="inset 0 2px 8px #0002">Inset</option>
+                                                <option value="inset 0 0 8px #38bdf8">Inset Blue</option>
+                                                <option value="inset 0 0 8px #facc15">Inset Yellow</option>
+                                            </optgroup>
+                                            <optgroup label="Multi-Layer & Special">
+                                                <option value="0 2px 4px #0001, 0 6px 24px #0002">Multi-Layer Soft</option>
+                                                <option value="0 1.5px 3px #0002, 0 0.5px 1px #0001">Multi-Layer Subtle</option>
+                                                <option value="0 8px 32px #0006, 0 1.5px 3px #38bdf8">Neumorphism</option>
+                                                <option value="0 4px 32px #fff8, 0 2px 8px #0002">Glassmorphism</option>
+                                            </optgroup>
+                                            <optgroup label="Custom">
+                                            <option value="custom">Custom...</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="text" id="boxShadowCustom" placeholder="e.g. 0 2px 8px #0003, 0 0 16px #38bdf8" aria-label="Custom Box Shadow" style="display:none;" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="filterSelect" title="Set CSS filter (visual effect)" style="display:flex;align-items:center;gap:0.4em;">
+                                        Filter
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Filter Info" title="CSS filters transform element appearance with blur, brightness, contrast, hue-rotation, saturation, and more. Stack multiple filters (space-separated) for complex effects. Includes basic filters, drop shadows, and advanced multi-filter combinations like vintage, dramatic, and artistic styles. Performance varies by filter complexity and browser support.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="filter-control" style="display:flex;flex-direction:column;gap:0.3em;">
+                                        <select id="filterSelect" aria-label="Filter Preset">
+                                            <optgroup label="Basic Filters">
+                                            <option value="none">None</option>
+                                            <option value="blur(4px)">Blur</option>
+                                            <option value="brightness(1.2)">Brighten</option>
+                                                <option value="brightness(0.7)">Dim</option>
+                                                <option value="contrast(1.5)">High Contrast</option>
+                                                <option value="contrast(0.7)">Low Contrast</option>
+                                            <option value="sepia(1)">Sepia</option>
+                                                <option value="invert(1)">Invert</option>
+                                                <option value="hue-rotate(90deg)">Hue Rotate 90°</option>
+                                                <option value="hue-rotate(180deg)">Hue Rotate 180°</option>
+                                                <option value="hue-rotate(270deg)">Hue Rotate 270°</option>
+                                            </optgroup>
+                                            <optgroup label="Drop Shadow Effects">
+                                                <option value="drop-shadow(0 2px 8px #38bdf8)">Drop Shadow Blue</option>
+                                                <option value="drop-shadow(0 2px 8px #facc15)">Drop Shadow Yellow</option>
+                                                <option value="drop-shadow(0 0 16px #fff)">Drop Shadow White</option>
+                                                <option value="drop-shadow(0 0 16px #f472b6)">Drop Shadow Pink</option>
+                                                <option value="drop-shadow(0 0 16px #4ade80)">Drop Shadow Green</option>
+                                                <option value="drop-shadow(0 4px 16px #0006)">Drop Shadow Deep</option>
+                                                <option value="drop-shadow(4px 4px 8px #0004)">Drop Shadow Bottom Right</option>
+                                                <option value="drop-shadow(-4px 4px 8px #0004)">Drop Shadow Bottom Left</option>
+                                                <option value="drop-shadow(4px -4px 8px #0004)">Drop Shadow Top Right</option>
+                                                <option value="drop-shadow(-4px -4px 8px #0004)">Drop Shadow Top Left</option>
+                                                <option value="drop-shadow(0 0 8px #0008)">Drop Shadow Centered</option>
+                                                <option value="drop-shadow(0 8px 24px #0005)">Drop Shadow Large</option>
+                                                <option value="drop-shadow(0 2px 8px #0002) drop-shadow(0 8px 24px #38bdf8)">Multi Drop Shadow Blue</option>
+                                                <option value="drop-shadow(0 2px 8px #0002) drop-shadow(0 8px 24px #f472b6)">Multi Drop Shadow Pink</option>
+                                                <option value="drop-shadow(0 2px 8px #0002) drop-shadow(0 8px 24px #facc15)">Multi Drop Shadow Yellow</option>
+                                                <option value="drop-shadow(0 2px 8px #0002) drop-shadow(0 8px 24px #4ade80)">Multi Drop Shadow Green</option>
+                                            </optgroup>
+                                            <optgroup label="Multi-Filter Effects">
+                                                <option value="blur(2px) brightness(1.2) hue-rotate(90deg)">Soft Glow</option>
+                                                <option value="blur(1.5px) grayscale(0.5) brightness(1.1)">Dreamy</option>
+                                                <option value="contrast(2) brightness(1.2)">Vivid</option>
+                                                <option value="invert(1) hue-rotate(180deg)">Inverted Colors</option>
+                                                <option value="blur(8px) brightness(1.5)">Frosted Glass</option>
+                                                <option value="contrast(1.2) brightness(1.1) saturate(1.2)">Sharpen</option>
+                                                <option value="sepia(0.7) brightness(1.1) contrast(0.9)">Soft Sepia</option>
+                                                <option value="sepia(0.5) contrast(1.2) brightness(0.9) saturate(0.7)">Vintage</option>
+                                                <option value="hue-rotate(200deg) saturate(1.2) brightness(1.1)">Cool Tone</option>
+                                                <option value="hue-rotate(-20deg) saturate(1.3) brightness(1.05)">Warm Tone</option>
+                                                <option value="contrast(1.8) brightness(0.8) grayscale(0.3)">Dramatic</option>
+                                                <option value="brightness(1.2) contrast(0.7) saturate(0.5)">Washed Out</option>
+                                                <option value="saturate(2.5)">High Saturation</option>
+                                                <option value="saturate(0.2)">Low Saturation</option>
+                                                <option value="grayscale(1) contrast(1.2)">Black &amp; White</option>
+                                            </optgroup>
+                                            <optgroup label="Custom">
+                                            <option value="custom">Custom...</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="text" id="filterCustom" placeholder="e.g. blur(2px) brightness(1.2) hue-rotate(90deg)" aria-label="Custom Filter" style="display:none;" title="Separate multiple filters with spaces, not commas. Example: blur(4px) brightness(1.2) drop-shadow(0 2px 8px #38bdf8)" />
+                                        <div id="filterWarning" class="filter-warning" style="display:none;color:#eab308;font-size:0.97em;margin-top:0.3em;"></div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="opacity" title="Set the opacity (0 = transparent, 1 = opaque)" style="display:flex;align-items:center;gap:0.4em;">
+                                        Opacity
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Opacity Info" title="Opacity affects the transparency of the element and all its children.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <input type="range" id="opacity" min="0" max="1" step="0.01" value="1" aria-label="Opacity">
+                                    <span class="value" id="opacityValue">1</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="willChange" title="Hint to the browser about which properties will animate. Use sparingly for performance optimization of animations and transitions." style="display:flex;align-items:center;gap:0.4em;">
+                                        Will Change
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Will Change Info" title="Optimizes performance by hinting which properties will animate. Use specific properties like 'transform' or 'opacity' for best results. 'Auto' lets browser decide. 'Scroll-position' optimizes scrolling. Use sparingly - overuse can hurt performance.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="custom-select-wrapper">
+                                        <select id="willChange" aria-label="Will Change">
+                                            <optgroup label="Common Properties">
+                                                <option value="auto">Auto (Browser Default)</option>
+                                                <option value="transform">Transform (Position/Rotation/Scale)</option>
+                                                <option value="opacity">Opacity (Transparency)</option>
+                                                <option value="scroll-position">Scroll Position</option>
+                                            </optgroup>
+                                            <optgroup label="Layout Properties">
+                                                <option value="left">Left (Position)</option>
+                                                <option value="top">Top (Position)</option>
+                                                <option value="width">Width (Size)</option>
+                                                <option value="height">Height (Size)</option>
+                                            </optgroup>
+                                            <optgroup label="Visual Properties">
+                                                <option value="background-color">Background Color</option>
+                                                <option value="color">Text Color</option>
+                                                <option value="border-color">Border Color</option>
+                                                <option value="box-shadow">Box Shadow</option>
+                                            </optgroup>
+                                            <optgroup label="CSS Values">
+                                                <option value="inherit">Inherit</option>
+                                                <option value="initial">Initial</option>
+                                                <option value="unset">Unset</option>
+                                            </optgroup>
+                                            <optgroup label="Custom">
+                                                <option value="custom">Custom Properties...</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="text" id="willChangeCustom" placeholder="e.g. transform, opacity, background-color" aria-label="Custom Will Change" style="display:none;margin-top:0.3em;" title="Enter custom will-change properties. Separate multiple properties with commas. Example: transform, opacity, background-color" />
+                                    </div>
+                            </div>
+                                <div class="control-group">
+                                    <label for="transform" title="Apply CSS transforms for rotation, scaling, translation, and skewing" style="display:flex;align-items:center;gap:0.4em;">
+                                        Transform
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Transform Info" title="Apply 2D and 3D transformations. 'None' removes all transforms. Use specific functions like 'rotate(45deg)', 'scale(1.5)', 'translate(10px, 20px)', or 'skew(10deg)'. Multiple transforms can be combined. Hardware accelerated for better performance.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="custom-select-wrapper">
+                                        <select id="transform" aria-label="Transform">
+                                            <optgroup label="No Transform">
+                                                <option value="none">None (No Transform)</option>
+                                            </optgroup>
+                                            <optgroup label="2D Transforms">
+                                                <option value="translate(10px, 20px)">Translate (Move)</option>
+                                                <option value="rotate(45deg)">Rotate (45°)</option>
+                                                <option value="scale(1.5)">Scale (1.5x)</option>
+                                                <option value="skew(10deg)">Skew (10°)</option>
+                                            </optgroup>
+                                            <optgroup label="3D Transforms">
+                                                <option value="translate3d(10px, 20px, 0px)">Translate 3D</option>
+                                                <option value="rotateX(45deg)">Rotate X (45°)</option>
+                                                <option value="rotateY(45deg)">Rotate Y (45°)</option>
+                                                <option value="rotateZ(45deg)">Rotate Z (45°)</option>
+                                            </optgroup>
+                                            <optgroup label="Combined Transforms">
+                                                <option value="translate(10px, 20px) rotate(45deg)">Move + Rotate</option>
+                                                <option value="scale(1.2) rotate(-10deg)">Scale + Rotate</option>
+                                                <option value="translate(50%, -50%)">Center Element</option>
+                                            </optgroup>
+                                            <optgroup label="CSS Values">
+                                                <option value="inherit">Inherit</option>
+                                                <option value="initial">Initial</option>
+                                                <option value="unset">Unset</option>
+                                            </optgroup>
+                                            <optgroup label="Custom">
+                                                <option value="custom">Custom Transform...</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="text" id="transformCustom" placeholder="e.g. translate(20px, 30px) rotate(15deg) scale(1.2)" aria-label="Custom Transform" style="display:none;margin-top:0.3em;" title="Enter custom transform values. Examples: translate(10px, 20px), rotate(45deg), scale(1.5), skew(10deg). Multiple transforms can be combined." />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="transition" title="Define smooth transitions between property changes" style="display:flex;align-items:center;gap:0.4em;">
+                                        Transition
+                                        <span tabindex="0" style="display:inline-flex;align-items:center;cursor:pointer;" aria-label="Transition Info" title="Create smooth animations when properties change. Format: 'property duration timing-function delay'. Use 'all' for all properties, or specify individual properties like 'background-color 0.3s ease'. Multiple transitions can be combined with commas.">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+                                        </span>
+                                    </label>
+                                    <div class="custom-select-wrapper">
+                                        <select id="transition" aria-label="Transition">
+                                            <optgroup label="No Transition">
+                                                <option value="none">None (No Transition)</option>
+                                            </optgroup>
+                                            <optgroup label="Quick Transitions">
+                                                <option value="all 0.2s ease">Quick (0.2s)</option>
+                                                <option value="all 0.3s ease">Standard (0.3s)</option>
+                                                <option value="all 0.5s ease">Smooth (0.5s)</option>
+                                            </optgroup>
+                                            <optgroup label="Specific Properties">
+                                                <option value="background-color 0.3s ease">Background Color</option>
+                                                <option value="color 0.3s ease">Text Color</option>
+                                                <option value="transform 0.3s ease">Transform</option>
+                                                <option value="opacity 0.3s ease">Opacity</option>
+                                                <option value="box-shadow 0.3s ease">Box Shadow</option>
+                                            </optgroup>
+                                            <optgroup label="Timing Functions">
+                                                <option value="all 0.3s linear">Linear</option>
+                                                <option value="all 0.3s ease-in">Ease In</option>
+                                                <option value="all 0.3s ease-out">Ease Out</option>
+                                                <option value="all 0.3s ease-in-out">Ease In Out</option>
+                                                <option value="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)">Cubic Bezier</option>
+                                            </optgroup>
+                                            <optgroup label="CSS Values">
+                                                <option value="inherit">Inherit</option>
+                                                <option value="initial">Initial</option>
+                                                <option value="unset">Unset</option>
+                                            </optgroup>
+                                            <optgroup label="Custom">
+                                                <option value="custom">Custom Transition...</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="text" id="transitionCustom" placeholder="e.g. all 0.4s cubic-bezier(.4,0,.2,1)" aria-label="Custom Transition" style="display:none;margin-top:0.3em;" title="Enter custom transition values. Format: property duration timing-function delay. Example: background-color 0.3s ease 0.1s" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <button id="showSidebarBtn" class="show-sidebar-btn hidden" aria-label="Show Style Editor Sidebar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <!-- Canvas Area -->
+            <section class="canvas-area">
+                <div class="canvas-content">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-placeholder">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <h3>Upload Your HTML/CSS Project</h3>
+                            <p>Drag and drop your HTML file here (required). You may also add a CSS file (optional).<br>Click to browse.</p>
+                            <div style="display: flex; justify-content: center; width: 100%; margin-top: 0.5rem;">
+                                <button class="btn btn-primary" style="width: 60%; max-width: 220px; display: flex; justify-content: center; align-items: center;">Choose Files</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <div class="preview-header">
+                            <div class="preview-toggle-group" id="previewToggleGroup">
+                                <button class="preview-toggle-btn active" id="livePreviewBtn" aria-label="Live Preview" title="Live Preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                                </button>
+                                <button class="preview-toggle-btn" id="codePreviewBtn" aria-label="Code Preview" title="Code Preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                </button>
+                            </div>
+                            <div class="preview-device-group" id="previewDeviceGroup" style="margin-left:auto;display:flex;gap:0.5em;">
+                                <button class="device-btn active" data-device="full" aria-label="Full Screen Preview" title="Full Screen Preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                                </button>
+                                <button class="device-btn" data-device="tablet" aria-label="Tablet Preview" title="Tablet Preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+                                </button>
+                                <button class="device-btn" data-device="mobile" aria-label="Mobile Preview" title="Mobile Preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>
+                                </button>
+                            </div>
+                            <div class="preview-actions">
+                                <button class="btn btn-small" id="refreshBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="23,4 23,10 17,10"/>
+                                        <polyline points="1,20 1,14 7,14"/>
+                                        <path d="M20.49,9A9,9,0,0,0,5.64,5.64L1,10m22,4L18.36,18.36A9,9,0,0,1,3.51,15"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="preview-frame" id="livePreviewArea">
+                            <iframe id="previewFrame" sandbox="allow-scripts allow-modals"></iframe>
+                        </div>
+                        <div class="code-preview-area" id="codePreviewArea" style="display:none;">
+                            <div class="code-tabs" id="codeTabs" style="display:none;"></div>
+                            <button class="btn btn-small" id="copyCodeBtn" aria-label="Copy code" title="Copy code" style="position:absolute;top:1.1em;right:1.1em;z-index:2;display:flex;align-items:center;gap:0.3em;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><rect x="3" y="3" width="13" height="13" rx="2"/></svg>
+                                <span style="font-size:0.95em;">Copy</span>
+                            </button>
+                            <pre class="code-block" id="codeBlock"><code></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Upload Project -->
+    <div id="uploadModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <button class="modal-close" id="closeUploadModal" aria-label="Close Upload Modal">&times;</button>
+        <h2>Upload Project Files</h2>
+        <form id="modalUploadForm" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: stretch;">
+          <div class="modal-upload-group">
+            <label for="modalHtmlInput">HTML File <span class="required">*</span></label>
+            <div class="modal-dropzone" id="modalHtmlDropzone">
+              <input type="file" id="modalHtmlInput" accept=".html" required style="display:none;" />
+              <div class="file-upload-display" id="modalHtmlFileDisplay">
+                <span class="file-upload-name" id="modalHtmlFileName">No file selected</span>
+                <button type="button" class="file-upload-change" id="modalHtmlChangeBtn">Change</button>
+                <button type="button" class="file-upload-clear" id="modalHtmlClearBtn" style="display:none;">&times;</button>
+              </div>
+              <span class="modal-dropzone-text">Drag & drop or click to select HTML file</span>
+            </div>
+          </div>
+          <div class="modal-upload-group">
+            <label for="modalCssInput">CSS File (optional)</label>
+            <div class="modal-dropzone" id="modalCssDropzone">
+              <input type="file" id="modalCssInput" accept=".css" style="display:none;" />
+              <div class="file-upload-display" id="modalCssFileDisplay">
+                <span class="file-upload-name" id="modalCssFileName">No file selected</span>
+                <button type="button" class="file-upload-change" id="modalCssChangeBtn">Change</button>
+                <button type="button" class="file-upload-clear" id="modalCssClearBtn" style="display:none;">&times;</button>
+              </div>
+              <span class="modal-dropzone-text">Drag & drop or click to select CSS file</span>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: center; width: 100%; margin-top: 0.5rem;">
+            <button type="submit" class="btn btn-primary modal-upload-btn" style="width: 60%; max-width: 220px; display: flex; justify-content: center; align-items: center;">Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="lib/jszip.min.js"></script>
+    <script src="js/platformConfig.js"></script>
+    <script src="js/platformNavigation.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fileHandler.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/exporter.js"></script>
+    <!-- At the end of <body>, before main app JS -->
+    <script src="platformPreloader.js"></script>
+</body>
+</html>
