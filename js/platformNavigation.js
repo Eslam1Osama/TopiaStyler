@@ -19,7 +19,7 @@ class PlatformNavigationManager {
                 },
                 {
                     name: 'Paletteniffer',
-                    url: 'https://topiastyler-paletteniffer.vercel.app'
+                    url: 'https://paletteniffer.vercel.app/'
                 }
             ];
         
