@@ -35,7 +35,7 @@ const PlatformConfig = {
                 },
                 {
                     name: 'Paletteniffer',
-                    url: 'https://poetbeloved.vercel.app/'
+                    url: 'https://paletteniffer.vercel.app/'
                 }
             ],
             staging: [
