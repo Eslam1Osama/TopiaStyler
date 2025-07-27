@@ -10,7 +10,7 @@ class PlatformNavigationManager {
             window.PlatformConfig.getPlatformApps() : [
                 {
                     name: 'Home',
-                    url: 'https://topiastyler-landing.vercel.app'
+                    url: 'https://eas-of-topia.vercel.app/'
                 },
                 {
                     name: 'Style Editor',
