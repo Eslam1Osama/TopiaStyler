@@ -1,6 +1,6 @@
 # TopiaStyler - Professional Visual HTML/CSS Editor
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Proprietary](https://img.shields.io/badge/license-Proprietary-red.svg)](#license)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://topia-styler.vercel.app/)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://topia-styler.vercel.app/)
 
@@ -107,14 +107,18 @@ Built-in analytics for:
 - Cross-app navigation patterns
 - Theme preference analytics
 
-## 🤝 Contributing
+## 🚫 License
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+This code is licensed under a **Proprietary License**.
 
+- **All rights reserved** by **EasOfTopia Technologies**.
+- You are **not permitted** to use, copy, modify, distribute, or sell any part of this project.
+- This repository is intended for internal/company use only.
 
-## 📄 License
+## 🏢 Ownership
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This software is the exclusive property of **EasOfTopia Technologies**.  
+Any attempt to reverse-engineer, reuse, or distribute the contents of this repository without prior written consent is strictly prohibited and may result in legal action.
 
 ## 🙏 Acknowledgments
 
