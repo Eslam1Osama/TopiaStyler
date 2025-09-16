@@ -33,8 +33,11 @@ class TopiaStylerApp {
             this.initializeUI();
             // Initialize theme toggle (fix for dark/light mode button)
             this.initializeThemeToggle();
+            
+            // Initialize logo reload functionality
+            this.initializeLogoReload();
+            
             this.isInitialized = true;
-            console.log('TopiaStyler initialized successfully');
             // Hide the preloader when app is ready, but ensure minimum display time
             if (window.hidePlatformPreloader) {
                 const elapsed = Date.now() - preloaderStart;
@@ -603,9 +606,6 @@ class TopiaStylerApp {
                 enableDropdown: true
             });
             
-            console.log('Platform navigation initialized');
-        } else {
-            console.warn('PlatformNavigationManager not available');
         }
     }
 
@@ -614,37 +614,48 @@ class TopiaStylerApp {
         const sunIcon = btn?.querySelector('.theme-icon-sun');
         const moonIcon = btn?.querySelector('.theme-icon-moon');
         const root = document.body;
+        
         // Load saved theme
         const saved = localStorage.getItem('easoftopia-theme');
         if (saved === 'dark') {
             root.classList.add('dark-mode');
-            sunIcon.style.display = '';
+            // Dark mode: show sun icon (to switch to light)
+            sunIcon.style.display = 'inline-block';
             moonIcon.style.display = 'none';
         } else {
             root.classList.remove('dark-mode');
+            // Light mode: show moon icon (to switch to dark)
             sunIcon.style.display = 'none';
-            moonIcon.style.display = '';
+            moonIcon.style.display = 'inline-block';
         }
+        
         btn?.addEventListener('click', () => {
             const isDark = root.classList.toggle('dark-mode');
-            // Animate icons
+            
+            // Instant icon switching - show target mode icon
             if (isDark) {
-                moonIcon.style.opacity = 0;
-                setTimeout(() => {
-                    moonIcon.style.display = 'none';
-                    sunIcon.style.display = '';
-                    setTimeout(() => { sunIcon.style.opacity = 1; }, 10);
-                }, 200);
+                // Dark mode: show sun icon (to switch to light)
+                sunIcon.style.display = 'inline-block';
+                moonIcon.style.display = 'none';
             } else {
-                sunIcon.style.opacity = 0;
-                setTimeout(() => {
-                    sunIcon.style.display = 'none';
-                    moonIcon.style.display = '';
-                    setTimeout(() => { moonIcon.style.opacity = 1; }, 10);
-                }, 200);
+                // Light mode: show moon icon (to switch to dark)
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'inline-block';
             }
+            
             localStorage.setItem('easoftopia-theme', isDark ? 'dark' : 'light');
         });
+    }
+
+    initializeLogoReload() {
+        const logoImg = document.getElementById('logo-img');
+        if (!logoImg) return;
+
+        // Add click event listener for reload functionality (image only)
+        logoImg.addEventListener('click', () => {
+            window.location.reload();
+        });
+
     }
 
     handleResize() {

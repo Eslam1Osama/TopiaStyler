@@ -1,4 +1,4 @@
-/* Platform Preloader - Modular, Theme-Aware, Animated */
+/* Platform Preloader - Modular, Light Mode Only */
 .platform-preloader {
   position: fixed;
   inset: 0;
@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--preloader-bg, #fff);
+  background: #fff;
   transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
   opacity: 1;
   pointer-events: all;
@@ -27,7 +27,7 @@
 }
 
 .preloader-logo svg {
-  color: var(--preloader-accent, #38bdf8);
+  color: #38bdf8;
   width: 64px;
   height: 64px;
   filter: drop-shadow(0 2px 12px rgba(56,189,248,0.15));
@@ -38,7 +38,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--preloader-accent, #38bdf8);
+  color: #38bdf8;
   text-shadow: 0 2px 8px rgba(56,189,248,0.08);
 }
 
@@ -53,7 +53,7 @@
 }
 
 .preloader-blocks .block {
-  fill: var(--preloader-accent, #38bdf8);
+  fill: #38bdf8;
   opacity: 0.7;
   transform: scale(0.7);
   animation: block-appear 1.2s cubic-bezier(.4,0,.2,1) forwards;
@@ -87,17 +87,8 @@
 .preloader-subtitle {
   font-size: 1rem;
   font-weight: 400;
-  color: var(--preloader-accent, #38bdf8);
+  color: #38bdf8;
   opacity: 0.7;
   margin-top: -0.5rem;
   letter-spacing: 0.04em;
 }
-
-:root {
-  --preloader-bg: #fff;
-  --preloader-accent: #38bdf8;
-}
-.dark-mode {
-  --preloader-bg: #1e293b;
-  --preloader-accent: #38bdf8;
-} 

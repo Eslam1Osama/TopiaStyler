@@ -50,6 +50,15 @@ body {
     text-overflow: ellipsis;
 }
 
+.logo-img {
+    cursor: pointer;
+    outline: none;
+}
+
+.logo-img:focus {
+    outline: none;
+}
+
 .logo svg {
     color: #38bdf8;
 }
@@ -72,6 +81,7 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     text-decoration: none;
+    outline: none;
 }
 
 .btn:disabled {
@@ -87,6 +97,7 @@ body {
 .btn-primary:hover:not(:disabled) {
     background: #0ea5e9;
     transform: translateY(-1px);
+    outline: none;
 }
 
 .btn-secondary {
@@ -97,6 +108,7 @@ body {
 .btn-secondary:hover:not(:disabled) {
     background: #1e40af;
     transform: translateY(-1px);
+    outline: none;
 }
 
 .btn-small {
@@ -129,12 +141,6 @@ body {
 .theme-icon {
   display: inline-block;
   vertical-align: middle;
-  transition: opacity 0.4s, transform 0.4s;
-  opacity: 1;
-}
-.theme-icon[style*="display:none"] {
-  opacity: 0;
-  transform: scale(0.7) rotate(-30deg);
 }
 .theme-icon-sun svg {
   color: #facc15;
@@ -212,6 +218,7 @@ input:focus, select:focus, textarea:focus {
 .btn:active, .btn:focus {
   background: var(--accent-dark) !important;
   color: #fff !important;
+  outline: none !important;
 }
 /* Code preview dark mode */
 .code-preview-container {
@@ -1220,6 +1227,10 @@ input:focus, select:focus, textarea:focus {
   outline: none !important;
 }
 .dark-mode .theme-icon-sun svg {
+  color: #facc15 !important;
+  filter: drop-shadow(0 0 6px #facc15);
+}
+.dark-mode .theme-icon-moon svg {
   color: #facc15 !important;
   filter: drop-shadow(0 0 6px #facc15);
 }

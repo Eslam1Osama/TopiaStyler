@@ -36,6 +36,10 @@ const PlatformConfig = {
                 {
                     name: 'Paletteniffer',
                     url: 'https://paletteniffer.vercel.app/'
+                },
+                {
+                    name: 'Palettinum',
+                    url: 'https://palettinum.vercel.app/'
                 }
             ],
             staging: [
@@ -51,6 +55,10 @@ const PlatformConfig = {
                 {
                     name: 'Paletteniffer',
                     url: 'https://paletteniffer.vercel.app/'
+                },
+                {
+                    name: 'Palettinum',
+                    url: 'https://palettinum.vercel.app/'
                 }
             ],
             production: [
@@ -66,6 +74,10 @@ const PlatformConfig = {
                 {
                     name: 'Paletteniffer',
                     url: 'https://paletteniffer.vercel.app/'
+                },
+                {
+                    name: 'Palettinum',
+                    url: 'https://palettinum.vercel.app/'
                 }
             ]
         };

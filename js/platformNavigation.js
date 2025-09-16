@@ -49,7 +49,6 @@ class PlatformNavigationManager {
         this.setupResponsiveBehavior();
         
         this.isInitialized = true;
-        console.log('Platform Navigation initialized successfully');
     }
 
     /**

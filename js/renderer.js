@@ -487,7 +487,6 @@ class Renderer {
     }
 
     onIframeReady() {
-        console.log('Iframe ready for interaction');
         // Iframe is ready, can now send messages to it
     }
 

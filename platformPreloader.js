@@ -19,7 +19,7 @@
     }
   };
 
-  // 4. Optionally, listen for theme changes in other tabs and update preloader color
+  // 4. Listen for theme changes in other tabs (preloader remains light mode)
   window.addEventListener('storage', function(event) {
     if (event.key === 'easoftopia-theme') {
       if (event.newValue === 'dark') {

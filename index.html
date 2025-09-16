@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#38bdf8">
     <meta name="msapplication-TileColor" content="#38bdf8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="TopiaStyler">
     
@@ -82,7 +82,7 @@
             <div class="nav-content">
                 <div class="nav-left">
                     <div class="logo">
-                        <img src="assets/logo.png" alt="TopiaStyler Logo" class="logo-img" onerror="this.style.display='none'" />
+                        <img src="assets/logo.png" alt="TopiaStyler Logo" class="logo-img" id="logo-img" title="Click to reload the application" onerror="this.style.display='none'" />
                         <span>TopiaStyler</span>
                     </div>
                 </div>
@@ -104,14 +104,14 @@
                         Download Project
                     </button>
                     <button id="themeToggleBtn" class="btn btn-theme-toggle" aria-label="Toggle dark/light mode">
-                        <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                        <span class="theme-icon theme-icon-sun" aria-hidden="true" style="display:none;">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="5"/>
                                 <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                             </svg>
                         </span>
-                        <span class="theme-icon theme-icon-moon" aria-hidden="true" style="display:none;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
                             </svg>
                         </span>
@@ -1338,13 +1338,7 @@
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('sw.js')
-                    .then(function(registration) {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(function(error) {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
+                navigator.serviceWorker.register('sw.js');
             });
         }
         

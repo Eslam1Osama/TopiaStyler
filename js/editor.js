@@ -293,9 +293,9 @@ class Editor {
             Promise.all(fontFamilies.map(font => 
                 document.fonts.load(`400 16px "${font}"`)
             )).then(() => {
-                // Removed: console.log('All Google Fonts loaded successfully');
+                // Fonts loaded silently
             }).catch(err => {
-                console.warn('Some fonts may not be loaded:', err);
+                // Silent fail for font loading - not critical for functionality
             });
         }
         
